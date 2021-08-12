@@ -1,12 +1,13 @@
-const todoControl = document.querySelector('.todo-control'),
+let storage = JSON.parse(localStorage.getItem('todo')),
+    todoControl = document.querySelector('.todo-control'),
     headerInput = document.querySelector('.header-input'),
     todoList = document.querySelector('.todo-list'),
     todoCompleted = document.querySelector('.todo-completed'),
-    todoData = [],
+    todoData = localStorage.getItem('todo') ? JSON.parse(localStorage.getItem('todo')) : [],
     render = function () {
         todoList.textContent = '';
         todoCompleted.textContent = '';
-        JSON.stringify(todoData);
+        localStorage.setItem('todo', JSON.stringify(todoData));
         todoData.forEach(function (item, index) {
             const li = document.createElement('li');
             li.classList.add('todo-item');
